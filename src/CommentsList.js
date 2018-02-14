@@ -3,14 +3,14 @@ import Comment from './CommentContainer';
 
 
 const CommentsList = ({comments, addComment}) => {
+    let input;
     return (
         <div>
-            <input id='new-commment' placeholder="enter comment" />
+            <input id='new-commment' placeholder="enter comment" ref={node => {input = node}}/>
             <button onClick={(e)=>{
-                    console.log(document.getElementById('new-comment'));
-                    addComment(document.getElementById('new-comment').value);
-
-            }}> asd</button>
+                e.preventDefault()
+                addComment(input.value);
+            }}> Add Comment</button>
             <ul>
             {
                 comments.map(comment=>{
